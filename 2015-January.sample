@@ -1,0 +1,913 @@
+From deadzen at deadzen.com  Thu Jan 22 17:59:31 2015
+From: deadzen at deadzen.com (DeadZen)
+Date: Thu, 22 Jan 2015 17:59:31 -0500
+Subject: Hello, everybody...
+Message-ID: <CAAaFgHsCWTUmvg7AEbysg+v5q3N2d8ESBTeaAw5Au2rMyUSeQQ@mail.gmail.com>
+
+Is this thing still on? Is there anyone at basho willing to discuss
+improvements to this project?
+We're a quiet and contemplative bunch, but I'm sure the time has come
+where we'd like to get some feedback as to what's going on with
+riak_core, I would like to hear some kind of feedback and if anyone at
+basho/or other parties are interested  in performance improvements in
+riak_core and things of that nature and would like to chime in..
+
+Peace,
+DeadZen
+
+
+From cmeiklejohn at basho.com  Fri Jan 23 10:56:03 2015
+From: cmeiklejohn at basho.com (Christopher Meiklejohn)
+Date: Fri, 23 Jan 2015 16:56:03 +0100
+Subject: Hello, everybody...
+In-Reply-To: <CAAaFgHsCWTUmvg7AEbysg+v5q3N2d8ESBTeaAw5Au2rMyUSeQQ@mail.gmail.com>
+References: <CAAaFgHsCWTUmvg7AEbysg+v5q3N2d8ESBTeaAw5Au2rMyUSeQQ@mail.gmail.com>
+Message-ID: <E6F09882-6E48-4472-A328-AB134520DE17@basho.com>
+
+
+> On Jan 22, 2015, at 11:59 PM, DeadZen <deadzen at deadzen.com> wrote:
+> 
+> Is this thing still on? Is there anyone at basho willing to discuss
+> improvements to this project?
+> We're a quiet and contemplative bunch, but I'm sure the time has come
+> where we'd like to get some feedback as to what's going on with
+> riak_core, I would like to hear some kind of feedback and if anyone at
+> basho/or other parties are interested  in performance improvements in
+> riak_core and things of that nature and would like to chime in..
+
+I?m here, and I?d love to discuss improvements.
+
+I?ve been spending most of my research on building a programming model 
+on top of Riak Core, and I?m definitely interested in changes that would help
+make the library easier to test.
+
+That said, I haven?t thought too much about it recently.
+
+- Chris
+
+Christopher Meiklejohn
+Senior Software Engineer
+Basho Technologies, Inc.
+cmeiklejohn at basho.com
+
+From mariano at marianoguerra.org  Fri Jan 23 11:48:09 2015
+From: mariano at marianoguerra.org (Mariano Guerra)
+Date: Sat, 24 Jan 2015 00:48:09 +0800
+Subject: Hello, everybody...
+In-Reply-To: <CAAaFgHsCWTUmvg7AEbysg+v5q3N2d8ESBTeaAw5Au2rMyUSeQQ@mail.gmail.com>
+References: <CAAaFgHsCWTUmvg7AEbysg+v5q3N2d8ESBTeaAw5Au2rMyUSeQQ@mail.gmail.com>
+Message-ID: <CAERHtPEKJKg-W=GcwEcyKfyX2P4nHP2+YF_S4ttcC+MC8eVBfQ@mail.gmail.com>
+
+On Fri, Jan 23, 2015 at 6:59 AM, DeadZen <deadzen at deadzen.com> wrote:
+
+> Is this thing still on? Is there anyone at basho willing to discuss
+> improvements to this project?
+> We're a quiet and contemplative bunch, but I'm sure the time has come
+> where we'd like to get some feedback as to what's going on with
+> riak_core, I would like to hear some kind of feedback and if anyone at
+> basho/or other parties are interested  in performance improvements in
+> riak_core and things of that nature and would like to chime in..
+>
+
+hi, I'm here :)
+
+I would like to talk about improvements in riak_core_security api since it
+seems to be focused on long connections or connections that maintain
+username/password for the whole lifetime, and I'm exposing my project API
+through REST using JSON Web Token.
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <http://lists.basho.com/pipermail/riak-core_lists.basho.com/attachments/20150124/864b169f/attachment.html>
+
+From mariano at marianoguerra.org  Fri Jan 23 11:52:24 2015
+From: mariano at marianoguerra.org (Mariano Guerra)
+Date: Sat, 24 Jan 2015 00:52:24 +0800
+Subject: my talk about riak_core in EFL Berlin 2014
+Message-ID: <CAERHtPFeQHUo9KHgyJ7eDsAAownOCt7ZkHKTBU9zWa1riPzE8g@mail.gmail.com>
+
+hi!
+
+I gave a talk in december and the video was published some days ago, sadly
+the first part is missing but not much content is lost (I plan to record it
+again as a screencast to have the full talk available at some point).
+
+the talk is here:
+
+https://www.youtube.com/watch?v=rJXM33EieGQ&feature=youtu.be
+
+the slides are here:
+
+http://marianoguerra.github.io/presentations/riak-core-small-bytes-berlin-efl-2014.html#/
+
+the code I describe is here, which has the longest readme I've ever written
+covering the content of the talk with more detail:
+
+https://github.com/marianoguerra/flaviodb
+
+hope it's useful, feedback is more than welcome!
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <http://lists.basho.com/pipermail/riak-core_lists.basho.com/attachments/20150124/fe68abe3/attachment.html>
+
+From mrallen1 at yahoo.com  Fri Jan 23 11:36:46 2015
+From: mrallen1 at yahoo.com (Mark Allen)
+Date: Fri, 23 Jan 2015 16:36:46 +0000 (UTC)
+Subject: Hello, everybody...
+In-Reply-To: <CAAaFgHsCWTUmvg7AEbysg+v5q3N2d8ESBTeaAw5Au2rMyUSeQQ@mail.gmail.com>
+References: <CAAaFgHsCWTUmvg7AEbysg+v5q3N2d8ESBTeaAw5Au2rMyUSeQQ@mail.gmail.com>
+Message-ID: <1135507199.240852.1422031006487.JavaMail.yahoo@mail.yahoo.com>
+
+I'm also interested in talking about improvements to riak_core. Do you have specific questions or proposals?
+I'll be giving a talk about riak_core at Erlang Factory in March, too. If you're looking for a "state of the project" update, that's most likely where it will be. (Talk and slides will both eventually be online too, if you can't make it there in person.)
+
+Thanks.
+Mark
+ 
+
+     On Thursday, January 22, 2015 5:00 PM, DeadZen <deadzen at deadzen.com> wrote:
+   
+
+ Is this thing still on? Is there anyone at basho willing to discuss
+improvements to this project?
+We're a quiet and contemplative bunch, but I'm sure the time has come
+where we'd like to get some feedback as to what's going on with
+riak_core, I would like to hear some kind of feedback and if anyone at
+basho/or other parties are interested? in performance improvements in
+riak_core and things of that nature and would like to chime in..
+
+Peace,
+DeadZen
+
+_______________________________________________
+riak-core mailing list
+riak-core at lists.basho.com
+http://lists.basho.com/mailman/listinfo/riak-core_lists.basho.com
+
+
+   
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <http://lists.basho.com/pipermail/riak-core_lists.basho.com/attachments/20150123/0fbbebe3/attachment.html>
+
+From alejandro.ramallo at leapsight.com  Fri Jan 23 12:54:28 2015
+From: alejandro.ramallo at leapsight.com (Alejandro Ramallo)
+Date: Fri, 23 Jan 2015 17:54:28 +0000
+Subject: We are here too :-)
+Message-ID: <D8F2D431-2FA2-4CA3-B007-5E49E762D921@leapsight.com>
+
+Hi,
+
+I am here too and have been for a long time but silently hiding :-)
+
+We?ve been working with Riak Core since 2012 as the base of our product, Leapsight Semantic Dataspace (LSD).
+LSD is an in-memory, (distributed , scalable, highly available, fault-tolerant)(*), semantic, deductive, graph dataspace.
+(*) thanks to Riak Core.
+
+Quick Facts about LSD:
+* Stores immutable, temporal and probabilistic facts called Statements i.e. statements are RDF Quads with time and probability
+* We use a Datalog base query and logic programming language to make queries that can derive new facts (reasoning)
+* Datalog uses relational algebra to compose n-arity tuples our of Statemens and other derived tuples
+
+I will making a detailed post soon explaining what LSD is in more detail, as I promised Steve Vinosky during Codemesh I would do it  :-)
+
+In the meantime you can get the rationale and more details (video and slides) at http://www.codemesh.io/codemesh2014/alejandro-ramallo.
+
+Cheers,
+
+
+
+
+
+Alejandro M. Ramallo | CEO
+Leapsight
+
+T  @aramallo
+M +44 7872 521075
+W  +44 1372 370884
+www.leapsight.com<http://www.leapsight.com>
+The Chapel, Wesley Road, Leatherhead, KT22 8ET
+
+The information in this e-mail and any files transmitted with it are confidential and intended solely for the use of the addressee. Access to this e-mail by anyone else is unauthorised.  If you are not the intended recipient any disclosure, copying and distribution of the information contained in this e-mail is prohibited.  Although this e-mail has been checked for all known viruses, the company cannot accept responsibility for any loss or damage arising from the use of this e-mail or its attachments.
+Leapsight is registered trademark of Ngineo Limited, a company registered in England.  Company Number: 7300487.  Registered address: 1st Floor, 7-10 Chandos Street, London W1G 9DQ.
+
+
+
+
+
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <http://lists.basho.com/pipermail/riak-core_lists.basho.com/attachments/20150123/d560a713/attachment.html>
+
+From jameschurchman at gmail.com  Fri Jan 23 13:25:31 2015
+From: jameschurchman at gmail.com (James Churchman)
+Date: Fri, 23 Jan 2015 18:25:31 +0000
+Subject: We are here too :-)
+In-Reply-To: <D8F2D431-2FA2-4CA3-B007-5E49E762D921@leapsight.com>
+References: <D8F2D431-2FA2-4CA3-B007-5E49E762D921@leapsight.com>
+Message-ID: <CAE0yOYmuW+D2UcZSHLQcQHoNzpYDjoX+PQs-O=OPuB46fUO22g@mail.gmail.com>
+
+It's called LSD and has some ACID properties ? right?
+
+On Friday, 23 January 2015, Alejandro Ramallo <
+alejandro.ramallo at leapsight.com> wrote:
+> Hi,
+> I am here too and have been for a long time but silently hiding :-)
+> We?ve been working with Riak Core since 2012 as the base of our product,
+Leapsight Semantic Dataspace (LSD).
+> LSD is an in-memory, (distributed , scalable, highly available,
+fault-tolerant)(*), semantic, deductive, graph dataspace.
+> (*) thanks to Riak Core.
+> Quick Facts about LSD:
+> * Stores immutable, temporal and probabilistic facts called Statements
+i.e. statements are RDF Quads with time and probability
+> * We use a Datalog base query and logic programming language to make
+queries that can derive new facts (reasoning)
+> * Datalog uses relational algebra to compose n-arity tuples our of
+Statemens and other derived tuples
+> I will making a detailed post soon explaining what LSD is in more detail,
+as I promised Steve Vinosky during Codemesh I would do it  :-)
+> In the meantime you can get the rationale and more details (video and
+slides) at http://www.codemesh.io/codemesh2014/alejandro-ramallo.
+> Cheers,
+>
+>
+>
+>
+> Alejandro M. Ramallo | CEO
+> Leapsight
+> T  @aramallo
+> M +44 7872 521075
+> W  +44 1372 370884
+> www.leapsight.com
+> The Chapel, Wesley Road, Leatherhead, KT22 8ET
+> The information in this e-mail and any files transmitted with it are
+confidential and intended solely for the use of the addressee. Access to
+this e-mail by anyone else is unauthorised.  If you are not the intended
+recipient any disclosure, copying and distribution of the information
+contained in this e-mail is prohibited.  Although this e-mail has been
+checked for all known viruses, the company cannot accept responsibility for
+any loss or damage arising from the use of this e-mail or its attachments.
+> Leapsight is registered trademark of Ngineo Limited, a company registered
+in England.  Company Number: 7300487.  Registered address: 1st Floor, 7-10
+Chandos Street, London W1G 9DQ.
+>
+>
+>
+>
+>
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <http://lists.basho.com/pipermail/riak-core_lists.basho.com/attachments/20150123/0b4f72af/attachment.html>
+
+From alejandro.ramallo at leapsight.com  Fri Jan 23 13:34:50 2015
+From: alejandro.ramallo at leapsight.com (Alejandro Ramallo)
+Date: Fri, 23 Jan 2015 18:34:50 +0000
+Subject: We are here too :-)
+In-Reply-To: <CAE0yOYmuW+D2UcZSHLQcQHoNzpYDjoX+PQs-O=OPuB46fUO22g@mail.gmail.com>
+References: <D8F2D431-2FA2-4CA3-B007-5E49E762D921@leapsight.com>
+	<CAE0yOYmuW+D2UcZSHLQcQHoNzpYDjoX+PQs-O=OPuB46fUO22g@mail.gmail.com>
+Message-ID: <FA00853A-A03F-464F-BA85-64A9B0FDFE26@leapsight.com>
+
+ACID 2.0 properties :-)
+
+So far it provides Eventual Consistency, however we are very close to validate that the whole dataspace is in fact a Convergent Replicated Set, thus we would be able to say it provides Strong Eventual Consistency.
+
+We are exploring using Basho?s Ensemble (multi-paxos) implementation to offer stronger consistency but not very easy to do.
+
+Regards
+
+Alejandro M. Ramallo | CEO
+Leapsight
+
+T  @aramallo
+M +44 7872 521075
+W  +44 1372 370884
+www.leapsight.com<http://www.leapsight.com>
+The Chapel, Wesley Road, Leatherhead, KT22 8ET
+
+The information in this e-mail and any files transmitted with it are confidential and intended solely for the use of the addressee. Access to this e-mail by anyone else is unauthorised.  If you are not the intended recipient any disclosure, copying and distribution of the information contained in this e-mail is prohibited.  Although this e-mail has been checked for all known viruses, the company cannot accept responsibility for any loss or damage arising from the use of this e-mail or its attachments.
+Leapsight is registered trademark of Ngineo Limited, a company registered in England.  Company Number: 7300487.  Registered address: 1st Floor, 7-10 Chandos Street, London W1G 9DQ.
+
+
+
+
+
+On 23 Jan 2015, at 18:25, James Churchman <jameschurchman at gmail.com<mailto:jameschurchman at gmail.com>> wrote:
+
+It's called LSD and has some ACID properties ? right?
+
+On Friday, 23 January 2015, Alejandro Ramallo <alejandro.ramallo at leapsight.com<mailto:alejandro.ramallo at leapsight.com>> wrote:
+> Hi,
+> I am here too and have been for a long time but silently hiding :-)
+> We?ve been working with Riak Core since 2012 as the base of our product, Leapsight Semantic Dataspace (LSD).
+> LSD is an in-memory, (distributed , scalable, highly available, fault-tolerant)(*), semantic, deductive, graph dataspace.
+> (*) thanks to Riak Core.
+> Quick Facts about LSD:
+> * Stores immutable, temporal and probabilistic facts called Statements i.e. statements are RDF Quads with time and probability
+> * We use a Datalog base query and logic programming language to make queries that can derive new facts (reasoning)
+> * Datalog uses relational algebra to compose n-arity tuples our of Statemens and other derived tuples
+> I will making a detailed post soon explaining what LSD is in more detail, as I promised Steve Vinosky during Codemesh I would do it  :-)
+> In the meantime you can get the rationale and more details (video and slides) at http://www.codemesh.io/codemesh2014/alejandro-ramallo.
+> Cheers,
+>
+>
+>
+>
+> Alejandro M. Ramallo | CEO
+> Leapsight
+> T  @aramallo
+> M +44 7872 521075
+> W  +44 1372 370884
+> www.leapsight.com<http://www.leapsight.com/>
+> The Chapel, Wesley Road, Leatherhead, KT22 8ET
+> The information in this e-mail and any files transmitted with it are confidential and intended solely for the use of the addressee. Access to this e-mail by anyone else is unauthorised.  If you are not the intended recipient any disclosure, copying and distribution of the information contained in this e-mail is prohibited.  Although this e-mail has been checked for all known viruses, the company cannot accept responsibility for any loss or damage arising from the use of this e-mail or its attachments.
+> Leapsight is registered trademark of Ngineo Limited, a company registered in England.  Company Number: 7300487.  Registered address: 1st Floor, 7-10 Chandos Street, London W1G 9DQ.
+>
+>
+>
+>
+> _______________________________________________
+riak-core mailing list
+riak-core at lists.basho.com<mailto:riak-core at lists.basho.com>
+http://lists.basho.com/mailman/listinfo/riak-core_lists.basho.com
+
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <http://lists.basho.com/pipermail/riak-core_lists.basho.com/attachments/20150123/3499bb81/attachment-0001.html>
+
+From deadzen at deadzen.com  Fri Jan 23 13:39:49 2015
+From: deadzen at deadzen.com (DeadZen)
+Date: Fri, 23 Jan 2015 13:39:49 -0500
+Subject: Hello, everybody...
+In-Reply-To: <1135507199.240852.1422031006487.JavaMail.yahoo@mail.yahoo.com>
+References: <CAAaFgHsCWTUmvg7AEbysg+v5q3N2d8ESBTeaAw5Au2rMyUSeQQ@mail.gmail.com>
+	<1135507199.240852.1422031006487.JavaMail.yahoo@mail.yahoo.com>
+Message-ID: <CAAaFgHvaR0FbJCRms0EiMZj6DaVnD0gwO8RbNbtvC45kb90NAg@mail.gmail.com>
+
+Excellent, Mariano & Mark, that looks like a great talk, unfortunately
+I'm in South Florida and probably won't make the factory.
+
+In my honest opinion, and in no offense to anyone whatsoever,  but I
+think riak_core needs to be many times more efficient at its job...
+
+I called out to basho-engineers, hoping theres still a technology
+direction at Basho that's as erlang developer focused as they are
+business focused...As we all know any improvements in this area will
+improve nearly all distributed Basho products. Such as riak, riak_ee
+and riak_cs.
+
+In reality Riak Core and not really RIAK does the work to create the
+Dynamo environment, and I think it should be represented on the Basho
+Documentation site, especially the sidebar here
+http://docs.basho.com/riak/latest/theory/dynamo/
+
+Basho the enterprise company lives alongside Basho the opensource
+leader, I'd like to implore the former to make considerable progress
+in appealing to the latter. Including initiating, representing,
+organizing and impressing riak_core developers. This is what is
+required to get things moving in one of the most important
+layers of Basho's systems.. And as an opensource implementation of
+Dynamo, Basho will want to make sure the design is not just correct
+but also efficient... This will require a large amount of resources
+for which I'm sure the decision to open source riak_core was heavily
+inspired by.
+
+The only way to not drop the ball on this initiative is to be the
+light tower providing direction...
+
+I'd like to start compiling maybe a list of known performance metrics,
+and possibly road map some fundamental changes (while still hopefully
+maintaining compatibility with existing riak_core apps)
+Maybe a list of design considerations, their impact and discussion of
+their criticality in riak_core,
+
+Here's a couple to get started...
+
+1. VNode messages have serialization points which seems unnecessary to
+satisfy a dynamo spec.
+2. Every VNode Applications creates a new ring size of VNode processes..
+
+
+I'm hoping we can also get this up on some kind of wiki or a
+documentation section on Basho's site,
+if none can be provided, I'll want to know that sooner rather than later..
+
+
+On Fri, Jan 23, 2015 at 11:36 AM, Mark Allen <mrallen1 at yahoo.com> wrote:
+> I'm also interested in talking about improvements to riak_core. Do you have
+> specific questions or proposals?
+>
+> I'll be giving a talk about riak_core at Erlang Factory in March, too. If
+> you're looking for a "state of the project" update, that's most likely where
+> it will be. (Talk and slides will both eventually be online too, if you
+> can't make it there in person.)
+>
+> Thanks.
+>
+> Mark
+>
+>
+> On Thursday, January 22, 2015 5:00 PM, DeadZen <deadzen at deadzen.com> wrote:
+>
+>
+> Is this thing still on? Is there anyone at basho willing to discuss
+> improvements to this project?
+> We're a quiet and contemplative bunch, but I'm sure the time has come
+> where we'd like to get some feedback as to what's going on with
+> riak_core, I would like to hear some kind of feedback and if anyone at
+> basho/or other parties are interested  in performance improvements in
+> riak_core and things of that nature and would like to chime in..
+>
+> Peace,
+> DeadZen
+>
+> _______________________________________________
+> riak-core mailing list
+> riak-core at lists.basho.com
+> http://lists.basho.com/mailman/listinfo/riak-core_lists.basho.com
+>
+>
+
+
+From mrallen1 at yahoo.com  Fri Jan 23 15:21:35 2015
+From: mrallen1 at yahoo.com (Mark Allen)
+Date: Fri, 23 Jan 2015 20:21:35 +0000 (UTC)
+Subject: my talk about riak_core in EFL Berlin 2014
+In-Reply-To: <CAERHtPFeQHUo9KHgyJ7eDsAAownOCt7ZkHKTBU9zWa1riPzE8g@mail.gmail.com>
+References: <CAERHtPFeQHUo9KHgyJ7eDsAAownOCt7ZkHKTBU9zWa1riPzE8g@mail.gmail.com>
+Message-ID: <126485581.364326.1422044495464.JavaMail.yahoo@mail.yahoo.com>
+
+Wow, that is an impressive write up Mariano. Thanks for sharing that! Looking forward to seeing your video soon.
+ 
+
+     On Friday, January 23, 2015 10:52 AM, Mariano Guerra <mariano at marianoguerra.org> wrote:
+   
+
+ hi!
+
+I gave a talk in december and the video was published some days ago, sadly the first part is missing but not much content is lost (I plan to record it again as a screencast to have the full talk available at some point).
+
+the talk is here:
+
+https://www.youtube.com/watch?v=rJXM33EieGQ&feature=youtu.be
+
+the slides are here:
+
+http://marianoguerra.github.io/presentations/riak-core-small-bytes-berlin-efl-2014.html#/
+
+the code I describe is here, which has the longest readme I've ever written covering the content of the talk with more detail:
+
+https://github.com/marianoguerra/flaviodb
+
+hope it's useful, feedback is more than welcome!
+
+_______________________________________________
+riak-core mailing list
+riak-core at lists.basho.com
+http://lists.basho.com/mailman/listinfo/riak-core_lists.basho.com
+
+
+    
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <http://lists.basho.com/pipermail/riak-core_lists.basho.com/attachments/20150123/7b23c4c1/attachment.html>
+
+From jmeredith at basho.com  Fri Jan 23 19:50:28 2015
+From: jmeredith at basho.com (Jon Meredith)
+Date: Fri, 23 Jan 2015 17:50:28 -0700
+Subject: Hello, everybody...
+In-Reply-To: <CAAaFgHvaR0FbJCRms0EiMZj6DaVnD0gwO8RbNbtvC45kb90NAg@mail.gmail.com>
+References: <CAAaFgHsCWTUmvg7AEbysg+v5q3N2d8ESBTeaAw5Au2rMyUSeQQ@mail.gmail.com>
+	<1135507199.240852.1422031006487.JavaMail.yahoo@mail.yahoo.com>
+	<CAAaFgHvaR0FbJCRms0EiMZj6DaVnD0gwO8RbNbtvC45kb90NAg@mail.gmail.com>
+Message-ID: <CAGgQeSvP8q2bvpUjiNq4Of1qRxAAOqoPDEFzORbBxkmDmC0+CQ@mail.gmail.com>
+
+tl;dr - yes, there's much we would love to improve in riak_core, for now
+collect ideas under issues with label core2015
+
+Hey DeadZen, Alejandro, Mariano, Bashons and general hangers on,
+
+Thanks for kicking the list back to life.  It's really exciting to hear
+about people using riak_core even if it isn't the friendliest repo in the
+world, and no offense taken to discussing it's shortcomings.
+
+We've been doing some prototyping for some new projects that we're
+interested in working on and are coming around to the idea that riak_core
+in it's current state is both too monolithic and as you point out needs
+work for performance.
+
+Inside Basho we talk about Core and what to do with it from time to time
+and have had a number of internal proposals from Joe Blomstedt, Jordan
+West, Andy Gross, myself and other Basho engineers.  There's a lot of
+coupling in the way riak core works, and we would like to refactor into
+subcomponents and clean up the interfaces between them so that it's much
+easier to use as a toolkit to create new distributed systems.
+
+* Cluster membership - belonging to a cluster doesn't mean you have to
+store data
+* Cluster metadata
+* Partitioning and claim - support for multiple 'rings', and indeed other
+partitioning/replication schemes
+* Request routing/encoding - would be really nice to ship things around the
+VM as binaries
+* Improved Request Parallelism - the core vnode worker pools could be much
+better
+* Security
+* Management
+* Failure detection
+* Elections - a common facility rather than apps relying on gen_leader or
+others.
+* Capability - what version of requests do nodes support, what versions of
+data can be stored/replicated
+
+There's a number of other concepts I'd personally like to see brought into
+core as first class objects
+
+ - mapping hardware on nodes to logical use for higher layers, e.g. which
+network interfaces should carry client traffic, which internode or mount
+points with their characteristics/purposes - good for sequential, or random
+writes.
+
+ - failure zones - definitely nodes, possibly down to mount points and
+processes.  You could isolate operating system processes by I/O device so
+that if it became slow it doesn't break everything.  Auto-discovery a
+definite plus.
+
+The real trick will be doing the refactoring work without breaking existing
+users of the library - the approach we've tried to take with Riak is build
+new functionality inside Riak while preserving the old functionality, then
+migrate components over as possible (like with cluster metadata or sidejob).
+
+The hard part is going to be coordinating things between all the interested
+parties - what you described as the open source leader Basho and business
+Basho. We're doing release planning at the moment and some of the
+objectives I described above may come out of that, but it is likely to take
+a few weeks before we get there.
+
+In the mean time, I don't want to waste people's enthusiasm around
+improving the library. Other users of the library may well have additional
+and/or better ideas than us.  The wiki is limited to commiters only at the
+moment, so the lowest friction way of collecting input is to submit GitHub
+issues labelled with core2015, then optionally let people know on the
+mailing list you added something.
+
+Using issue filters you can get a nice summary here
+https://github.com/basho/riak_core/labels/core2015
+
+My only caveat is to ask for some patience while we take care of our
+internal planning and process. The resource commitments we can make and how
+best to support more open development will require some internal discussion.
+
+Best regards, Jon
+
+
+
+On Fri, Jan 23, 2015 at 11:39 AM, DeadZen <deadzen at deadzen.com> wrote:
+
+> Excellent, Mariano & Mark, that looks like a great talk, unfortunately
+> I'm in South Florida and probably won't make the factory.
+>
+> In my honest opinion, and in no offense to anyone whatsoever,  but I
+> think riak_core needs to be many times more efficient at its job...
+>
+> I called out to basho-engineers, hoping theres still a technology
+> direction at Basho that's as erlang developer focused as they are
+> business focused...As we all know any improvements in this area will
+> improve nearly all distributed Basho products. Such as riak, riak_ee
+> and riak_cs.
+>
+> In reality Riak Core and not really RIAK does the work to create the
+> Dynamo environment, and I think it should be represented on the Basho
+> Documentation site, especially the sidebar here
+> http://docs.basho.com/riak/latest/theory/dynamo/
+>
+> Basho the enterprise company lives alongside Basho the opensource
+> leader, I'd like to implore the former to make considerable progress
+> in appealing to the latter. Including initiating, representing,
+> organizing and impressing riak_core developers. This is what is
+> required to get things moving in one of the most important
+> layers of Basho's systems.. And as an opensource implementation of
+> Dynamo, Basho will want to make sure the design is not just correct
+> but also efficient... This will require a large amount of resources
+> for which I'm sure the decision to open source riak_core was heavily
+> inspired by.
+>
+> The only way to not drop the ball on this initiative is to be the
+> light tower providing direction...
+>
+> I'd like to start compiling maybe a list of known performance metrics,
+> and possibly road map some fundamental changes (while still hopefully
+> maintaining compatibility with existing riak_core apps)
+> Maybe a list of design considerations, their impact and discussion of
+> their criticality in riak_core,
+>
+> Here's a couple to get started...
+>
+> 1. VNode messages have serialization points which seems unnecessary to
+> satisfy a dynamo spec.
+> 2. Every VNode Applications creates a new ring size of VNode processes..
+>
+>
+> I'm hoping we can also get this up on some kind of wiki or a
+> documentation section on Basho's site,
+> if none can be provided, I'll want to know that sooner rather than later..
+>
+>
+> On Fri, Jan 23, 2015 at 11:36 AM, Mark Allen <mrallen1 at yahoo.com> wrote:
+> > I'm also interested in talking about improvements to riak_core. Do you
+> have
+> > specific questions or proposals?
+> >
+> > I'll be giving a talk about riak_core at Erlang Factory in March, too. If
+> > you're looking for a "state of the project" update, that's most likely
+> where
+> > it will be. (Talk and slides will both eventually be online too, if you
+> > can't make it there in person.)
+> >
+> > Thanks.
+> >
+> > Mark
+> >
+> >
+> > On Thursday, January 22, 2015 5:00 PM, DeadZen <deadzen at deadzen.com>
+> wrote:
+> >
+> >
+> > Is this thing still on? Is there anyone at basho willing to discuss
+> > improvements to this project?
+> > We're a quiet and contemplative bunch, but I'm sure the time has come
+> > where we'd like to get some feedback as to what's going on with
+> > riak_core, I would like to hear some kind of feedback and if anyone at
+> > basho/or other parties are interested  in performance improvements in
+> > riak_core and things of that nature and would like to chime in..
+> >
+> > Peace,
+> > DeadZen
+> >
+> > _______________________________________________
+> > riak-core mailing list
+> > riak-core at lists.basho.com
+> > http://lists.basho.com/mailman/listinfo/riak-core_lists.basho.com
+> >
+> >
+>
+> _______________________________________________
+> riak-core mailing list
+> riak-core at lists.basho.com
+> http://lists.basho.com/mailman/listinfo/riak-core_lists.basho.com
+>
+
+
+
+-- 
+Jon Meredith
+Chief Architect
+Basho Technologies, Inc.
+jmeredith at basho.com
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <http://lists.basho.com/pipermail/riak-core_lists.basho.com/attachments/20150123/761e4298/attachment-0001.html>
+
+From deadzen at deadzen.com  Fri Jan 23 20:30:59 2015
+From: deadzen at deadzen.com (DeadZen)
+Date: Fri, 23 Jan 2015 20:30:59 -0500
+Subject: Hello, everybody...
+In-Reply-To: <CAGgQeSvP8q2bvpUjiNq4Of1qRxAAOqoPDEFzORbBxkmDmC0+CQ@mail.gmail.com>
+References: <CAAaFgHsCWTUmvg7AEbysg+v5q3N2d8ESBTeaAw5Au2rMyUSeQQ@mail.gmail.com>
+	<1135507199.240852.1422031006487.JavaMail.yahoo@mail.yahoo.com>
+	<CAAaFgHvaR0FbJCRms0EiMZj6DaVnD0gwO8RbNbtvC45kb90NAg@mail.gmail.com>
+	<CAGgQeSvP8q2bvpUjiNq4Of1qRxAAOqoPDEFzORbBxkmDmC0+CQ@mail.gmail.com>
+Message-ID: <CAAaFgHs7vOQWSS_6Pd-vyCC_iuAcxWwUqMAtUaxsW_RSnJG9sA@mail.gmail.com>
+
+That's great news Jon, I think filing issues on many of those points
+labeled as "core2015" - seems like a great immediate option.
+
+We should see what can be done about a lot of aging data resources on
+riak_core, and I'm sure new people coming into the fold are
+unsurprisingly going to have more friction, if the documentation
+doesn't apply to all the considerable work that was done to get to
+riak_core version 2.
+
+As far as improvements go, being able to just get feedback as to
+whether or not an initiative would be welcomed is a big plus to
+getting people to commit time to seeing it through. I definitely want
+to see that communication conspire between these open source leaders
+you mentioned and the community concurrent with release planning for
+riak.
+
+This is of course easier said then done, the most daunting obstacle
+being developer burn out, it's clear that distributed computing in
+Erlang is a fairly complex challenge before even applying a single
+line of code.  And as there is a considerable shadow curriculum
+involved in understanding concurrency in programming let alone
+throwing temporally adjacent distributed node development on top of
+this, most people simply don't have, that kind of experience to offer
+assistance. Thus putting the biggest bottleneck on the people.
+
+I think the short term and long term goals are the same here in an odd
+way, riak_core is almost a coded version of the problems associated
+with distributed computing that have to be handled to offer fault
+tolerant high availability. Going over how riak_core implements the
+Dynamo approach to that problem can do a lot for finding areas that
+can be improved in riak_core, while simultaneously explaining it to
+the novice programmer...
+
+As far as patience goes, I don't think that's a major concern at all,
+if there's information helping to be kept in the loop with no mixed
+signals. In the end this is about getting more people understanding
+distributed computing and how erlang enables that kind of programming
+and about high availability and how riak_core enables that kind of
+design.
+
+Getting people initiated into that fundamental knowledge is
+challenging but necessary in an obvious way.
+
+
+
+
+On Fri, Jan 23, 2015 at 7:50 PM, Jon Meredith <jmeredith at basho.com> wrote:
+> tl;dr - yes, there's much we would love to improve in riak_core, for now
+> collect ideas under issues with label core2015
+>
+> Hey DeadZen, Alejandro, Mariano, Bashons and general hangers on,
+>
+> Thanks for kicking the list back to life.  It's really exciting to hear
+> about people using riak_core even if it isn't the friendliest repo in the
+> world, and no offense taken to discussing it's shortcomings.
+>
+> We've been doing some prototyping for some new projects that we're
+> interested in working on and are coming around to the idea that riak_core in
+> it's current state is both too monolithic and as you point out needs work
+> for performance.
+>
+> Inside Basho we talk about Core and what to do with it from time to time and
+> have had a number of internal proposals from Joe Blomstedt, Jordan West,
+> Andy Gross, myself and other Basho engineers.  There's a lot of coupling in
+> the way riak core works, and we would like to refactor into subcomponents
+> and clean up the interfaces between them so that it's much easier to use as
+> a toolkit to create new distributed systems.
+>
+> * Cluster membership - belonging to a cluster doesn't mean you have to store
+> data
+> * Cluster metadata
+> * Partitioning and claim - support for multiple 'rings', and indeed other
+> partitioning/replication schemes
+> * Request routing/encoding - would be really nice to ship things around the
+> VM as binaries
+> * Improved Request Parallelism - the core vnode worker pools could be much
+> better
+> * Security
+> * Management
+> * Failure detection
+> * Elections - a common facility rather than apps relying on gen_leader or
+> others.
+> * Capability - what version of requests do nodes support, what versions of
+> data can be stored/replicated
+>
+> There's a number of other concepts I'd personally like to see brought into
+> core as first class objects
+>
+>  - mapping hardware on nodes to logical use for higher layers, e.g. which
+> network interfaces should carry client traffic, which internode or mount
+> points with their characteristics/purposes - good for sequential, or random
+> writes.
+>
+>  - failure zones - definitely nodes, possibly down to mount points and
+> processes.  You could isolate operating system processes by I/O device so
+> that if it became slow it doesn't break everything.  Auto-discovery a
+> definite plus.
+>
+> The real trick will be doing the refactoring work without breaking existing
+> users of the library - the approach we've tried to take with Riak is build
+> new functionality inside Riak while preserving the old functionality, then
+> migrate components over as possible (like with cluster metadata or sidejob).
+>
+> The hard part is going to be coordinating things between all the interested
+> parties - what you described as the open source leader Basho and business
+> Basho. We're doing release planning at the moment and some of the objectives
+> I described above may come out of that, but it is likely to take a few weeks
+> before we get there.
+>
+> In the mean time, I don't want to waste people's enthusiasm around improving
+> the library. Other users of the library may well have additional and/or
+> better ideas than us.  The wiki is limited to commiters only at the moment,
+> so the lowest friction way of collecting input is to submit GitHub issues
+> labelled with core2015, then optionally let people know on the mailing list
+> you added something.
+>
+> Using issue filters you can get a nice summary here
+> https://github.com/basho/riak_core/labels/core2015
+>
+> My only caveat is to ask for some patience while we take care of our
+> internal planning and process. The resource commitments we can make and how
+> best to support more open development will require some internal discussion.
+>
+> Best regards, Jon
+>
+>
+>
+> On Fri, Jan 23, 2015 at 11:39 AM, DeadZen <deadzen at deadzen.com> wrote:
+>>
+>> Excellent, Mariano & Mark, that looks like a great talk, unfortunately
+>> I'm in South Florida and probably won't make the factory.
+>>
+>> In my honest opinion, and in no offense to anyone whatsoever,  but I
+>> think riak_core needs to be many times more efficient at its job...
+>>
+>> I called out to basho-engineers, hoping theres still a technology
+>> direction at Basho that's as erlang developer focused as they are
+>> business focused...As we all know any improvements in this area will
+>> improve nearly all distributed Basho products. Such as riak, riak_ee
+>> and riak_cs.
+>>
+>> In reality Riak Core and not really RIAK does the work to create the
+>> Dynamo environment, and I think it should be represented on the Basho
+>> Documentation site, especially the sidebar here
+>> http://docs.basho.com/riak/latest/theory/dynamo/
+>>
+>> Basho the enterprise company lives alongside Basho the opensource
+>> leader, I'd like to implore the former to make considerable progress
+>> in appealing to the latter. Including initiating, representing,
+>> organizing and impressing riak_core developers. This is what is
+>> required to get things moving in one of the most important
+>> layers of Basho's systems.. And as an opensource implementation of
+>> Dynamo, Basho will want to make sure the design is not just correct
+>> but also efficient... This will require a large amount of resources
+>> for which I'm sure the decision to open source riak_core was heavily
+>> inspired by.
+>>
+>> The only way to not drop the ball on this initiative is to be the
+>> light tower providing direction...
+>>
+>> I'd like to start compiling maybe a list of known performance metrics,
+>> and possibly road map some fundamental changes (while still hopefully
+>> maintaining compatibility with existing riak_core apps)
+>> Maybe a list of design considerations, their impact and discussion of
+>> their criticality in riak_core,
+>>
+>> Here's a couple to get started...
+>>
+>> 1. VNode messages have serialization points which seems unnecessary to
+>> satisfy a dynamo spec.
+>> 2. Every VNode Applications creates a new ring size of VNode processes..
+>>
+>>
+>> I'm hoping we can also get this up on some kind of wiki or a
+>> documentation section on Basho's site,
+>> if none can be provided, I'll want to know that sooner rather than later..
+>>
+>>
+>> On Fri, Jan 23, 2015 at 11:36 AM, Mark Allen <mrallen1 at yahoo.com> wrote:
+>> > I'm also interested in talking about improvements to riak_core. Do you
+>> > have
+>> > specific questions or proposals?
+>> >
+>> > I'll be giving a talk about riak_core at Erlang Factory in March, too.
+>> > If
+>> > you're looking for a "state of the project" update, that's most likely
+>> > where
+>> > it will be. (Talk and slides will both eventually be online too, if you
+>> > can't make it there in person.)
+>> >
+>> > Thanks.
+>> >
+>> > Mark
+>> >
+>> >
+>> > On Thursday, January 22, 2015 5:00 PM, DeadZen <deadzen at deadzen.com>
+>> > wrote:
+>> >
+>> >
+>> > Is this thing still on? Is there anyone at basho willing to discuss
+>> > improvements to this project?
+>> > We're a quiet and contemplative bunch, but I'm sure the time has come
+>> > where we'd like to get some feedback as to what's going on with
+>> > riak_core, I would like to hear some kind of feedback and if anyone at
+>> > basho/or other parties are interested  in performance improvements in
+>> > riak_core and things of that nature and would like to chime in..
+>> >
+>> > Peace,
+>> > DeadZen
+>> >
+>> > _______________________________________________
+>> > riak-core mailing list
+>> > riak-core at lists.basho.com
+>> > http://lists.basho.com/mailman/listinfo/riak-core_lists.basho.com
+>> >
+>> >
+>>
+>> _______________________________________________
+>> riak-core mailing list
+>> riak-core at lists.basho.com
+>> http://lists.basho.com/mailman/listinfo/riak-core_lists.basho.com
+>
+>
+>
+>
+> --
+> Jon Meredith
+> Chief Architect
+> Basho Technologies, Inc.
+> jmeredith at basho.com
+
+
