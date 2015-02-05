@@ -1,4 +1,5 @@
 bin/
 *~
 *.txt
+*.mbox
 *.gz
