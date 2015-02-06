@@ -1,0 +1,401 @@
+
+From mark@basho.com Thu Dec 27 16:23:12 2012
+Received: from mail-ia0-f173.google.com ([209.85.210.173]:58836)
+    by cloud3.emwd.com with esmtps (TLSv1:RC4-SHA:128) (Exim 4.80)
+    (envelope-from <mark@basho.com>) id 1ToKv2-00016X-0J
+    for riak-users@lists.basho.com; Thu, 27 Dec 2012 16:23:12 -0500
+Received: by mail-ia0-f173.google.com with SMTP id w21so8363489iac.18
+    for <riak-users@lists.basho.com>; Thu, 27 Dec 2012 13:23:11 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+    d=google.com; s=20120113;
+    h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+    :cc:content-type:x-gm-message-state;
+    bh=h0cEOB80ThCzcOts53JSqugfnJfFuxEwKBBYCYvdEL0=;
+    b=HNWrtTv9WlQ6CuPVUiI6iA/OXbA6vAG/9VVihT1A/m/K7sFzT1TI+pCom4YmSfNLl7
+    PHIzJ5m/B0X4jPNAIdr1rp5XqZuecTWp5uGOjjFuJBuPvBqOQw6nltY93Us6DlVlRF+b
+    lQVGCHYtrLQIieW944L4bs1KCKYKltqeIgIQGYKNxsHegs8E+lYB0aaPMA2gVqGJtjC/
+    9R3NdMqFGYEGZnID/TJ65GnQ0W1bB72iu5UtrbR6Zy+ReSsDjwNsT2GMJDyQwf4wV3RZ
+    sF7D4gxE9MNGp5Qj9+o+mJv7zgomyc/F73guueAV95ncC+ilJMUAL7vWjupxhvECjOgK
+    pvhA==
+Received: by 10.50.153.194 with SMTP id vi2mr28511145igb.15.1356643391517;
+    Thu, 27 Dec 2012 13:23:11 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.50.157.193 with HTTP; Thu, 27 Dec 2012 13:22:51 -0800 (PST)
+In-Reply-To: <1354970428844-4026221.post@n3.nabble.com>
+References: <1354903265367-4026208.post@n3.nabble.com>
+    <CAN9Z=ziG8CS8BRPHXrDR3HbOnNwQvk9i8Zn8WNRfpZP=RqyVJA@mail.gmail.com>
+    <1354906133367-4026211.post@n3.nabble.com>
+    <CAN9Z=zg+BmPg7iQ0CQ=EyxRwfeHZAcaNpHBv-Oq5s30bQwQWXg@mail.gmail.com>
+    <1354970428844-4026221.post@n3.nabble.com>
+From: Mark Phillips <mark@basho.com>
+Date: Thu, 27 Dec 2012 16:22:51 -0500
+Message-ID: <CAE8zJQH3GErEiZEaW_vgmgoCYNgY+NKmezTP5uXya_pjxueVMA@mail.gmail.com>
+Subject: Re: Deleted objects
+To: Daniil Churikov <ddosia@gmail.com>
+Content-Type: text/plain; charset=ISO-8859-1
+X-Gm-Message-State: ALoCoQlgr02tCELyhqHGWtOZaqnVYJwEwp/DyZwBuKxFitsHu7MY1+Mm9tLLkC22fbG1eCMhtQ0y
+Cc: riak-users@lists.basho.com
+X-BeenThere: riak-users@lists.basho.com
+X-Mailman-Version: 2.1.15
+Precedence: list
+List-Id: discussion of the Riak data storage system
+    <riak-users_lists.basho.com.lists.basho.com>
+List-Unsubscribe: <http://lists.basho.com/mailman/options/riak-users_lists.basho.com>,
+    <mailto:riak-users-request@lists.basho.com?subject=unsubscribe>
+List-Archive: <http://lists.basho.com/pipermail/riak-users_lists.basho.com/>
+List-Post: <mailto:riak-users@lists.basho.com>
+List-Help: <mailto:riak-users-request@lists.basho.com?subject=help>
+List-Subscribe: <http://lists.basho.com/mailman/listinfo/riak-users_lists.basho.com>,
+    <mailto:riak-users-request@lists.basho.com?subject=subscribe>
+X-List-Received-Date: Thu, 27 Dec 2012 21:23:12 -0000
+
+On Sat, Dec 8, 2012 at 7:40 AM, Daniil Churikov <ddosia@gmail.com> wrote:
+> Is there any docs about it? I just see from mailing lists that people use
+> mapreduce more and more, and probably they do not know yet about such
+> things.
+>
+
+It doesn't look like we have any docs about this. I just opened an
+issue[0] to make sure we get it in writing somewhere. Feel free to add
+color to it.
+
+Thanks for helping us dig this up.
+
+Mark
+
+[0] https://github.com/basho/basho_docs/issues/141
+
+>
+>
+> --
+> View this message in context: http://riak-users.197444.n3.nabble.com/Deleted-objects-tp4026208p4026221.html
+> Sent from the Riak Users mailing list archive at Nabble.com.
+>
+> _______________________________________________
+> riak-users mailing list
+> riak-users@lists.basho.com
+> http://lists.basho.com/mailman/listinfo/riak-users_lists.basho.com
+
+
+From pvenkatesh@basho.com Thu Dec 27 17:19:18 2012
+Received: from mail-pb0-f51.google.com ([209.85.160.51]:52643)
+    by cloud3.emwd.com with esmtps (TLSv1:RC4-SHA:128) (Exim 4.80)
+    (envelope-from <pvenkatesh@basho.com>) id 1ToLnK-0002y7-DZ
+    for riak-users@lists.basho.com; Thu, 27 Dec 2012 17:19:18 -0500
+Received: by mail-pb0-f51.google.com with SMTP id ro12so5537996pbb.38
+    for <riak-users@lists.basho.com>; Thu, 27 Dec 2012 14:19:17 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+    d=google.com; s=20120113;
+    h=x-received:user-agent:date:subject:from:to:message-id:thread-topic
+    :in-reply-to:mime-version:content-type:content-transfer-encoding
+    :x-gm-message-state;
+    bh=aOmReBxJp9cc2oFA/1DruOvZlNKnB6DDM81eM9S9gmc=;
+    b=NmLK1dTA8IQKN57t15U4cAV47JvvFOsJRgjxfDoido/S1KOO8BdDYrRbbesjPTNpji
+    ATwshXCCoQQrykbjZ8P2upVNiv0cULZE22f+5G7n9K8Okdp2r61cnLYavHshUy1jM8fa
+    bke0yHMsVoqxdJ8zlxWxEVpuPLOr/rihLED21yVqTD2lxiTrtjjNs9Q9fLQcpflzvGyj
+    JGp66Uk57wI3g2HToEki8BWArFQQP0pN69nj9fvTXnDI6LUD/outWYvM0zEjEPmw0dhH
+    MgRVZddfNGJa5fBD7SPptYZUkyQanCQ8zyb3YuIqwXsPvAClmazY5jq8K+ctcFMyJriy
+    e24A==
+X-Received: by 10.68.125.195 with SMTP id ms3mr97985183pbb.149.1356646757401; 
+    Thu, 27 Dec 2012 14:19:17 -0800 (PST)
+Received: from [192.168.0.6] ([108.240.221.133])
+    by mx.google.com with ESMTPS id kb3sm18452367pbc.27.2012.12.27.14.19.13
+    (version=SSLv3 cipher=OTHER); Thu, 27 Dec 2012 14:19:16 -0800 (PST)
+User-Agent: Microsoft-MacOutlook/14.2.0.120402
+Date: Thu, 27 Dec 2012 14:19:09 -0800
+Subject: Re: vclock, vtag, entity tag
+From: Pavan  Venkatesh <pvenkatesh@basho.com>
+To: Shuhao <shuhao@shuhaowu.com>,
+    "riak-users@lists.basho.com" <riak-users@lists.basho.com>
+Message-ID: <CD02095C.1B62%pvenkatesh@basho.com>
+Thread-Topic: vclock, vtag, entity tag
+In-Reply-To: <CCFFD491.1AC7%shuhao@shuhaowu.com>
+Mime-version: 1.0
+Content-type: text/plain;
+    charset="US-ASCII"
+Content-transfer-encoding: 7bit
+X-Gm-Message-State: ALoCoQluN5+WnlkLvdOQTLCVDoWy8yLJBSPW9fEtOZN97XMaS+kH+lmnekyesDwdsX8i9ZP81ofu
+X-BeenThere: riak-users@lists.basho.com
+X-Mailman-Version: 2.1.15
+Precedence: list
+List-Id: discussion of the Riak data storage system
+    <riak-users_lists.basho.com.lists.basho.com>
+List-Unsubscribe: <http://lists.basho.com/mailman/options/riak-users_lists.basho.com>,
+    <mailto:riak-users-request@lists.basho.com?subject=unsubscribe>
+List-Archive: <http://lists.basho.com/pipermail/riak-users_lists.basho.com/>
+List-Post: <mailto:riak-users@lists.basho.com>
+List-Help: <mailto:riak-users-request@lists.basho.com?subject=help>
+List-Subscribe: <http://lists.basho.com/mailman/listinfo/riak-users_lists.basho.com>,
+    <mailto:riak-users-request@lists.basho.com?subject=subscribe>
+X-List-Received-Date: Thu, 27 Dec 2012 22:19:18 -0000
+
+Hi Shuhao,
+
+Lets say, two clients update the same object at the same time (through
+http or protobuf),then a sibling is created, but with the same vector
+clock.They merge into single object with one vector clock, but these
+siblings live in the same object.
+User intervention is required and one can pick the correct value and issue
+a put request with that vector clock in order to resolve the conflict.
+Hope this helps.
+
+Pavan
+
+On 12/25/12 10:08 PM, "Shuhao" <shuhao@shuhaowu.com> wrote:
+
+>Hi,
+>
+>I'm just browsing through the API documentations for Riak and I just
+>noticed a couple of things that's pretty confusing:
+>
+>It's my understanding that with the HTTP fetch request, each
+>object/sibling returned will have its own vclock in the form of the HTTP
+>header `X-Riak-Vclock` and an entity tag under the header `ETag`. There
+>is also a vtag url parameter specified by the HTTP fetch request which I
+>assume fetches specific sibling with that entity tag. [1]
+>
+>[1]: 
+>http://docs.basho.com/riak/latest/references/apis/http/HTTP-Fetch-Object/
+>
+>However, the protobuf client will return a list of siblings but only
+>with 1 vclock with `optional bytes vclock = 2;` for all the siblings
+>returned under `content`. For each sibling, there will be a `vtag`
+>attribute, which I assume is the entity tag as specified in the HTTP
+>document. [2]
+>
+>[2]: 
+>http://docs.basho.com/riak/latest/references/apis/protocol-buffers/PBC-Fet
+>ch
+>-Object/
+>
+>So the confusion is that why is it that in the HTTP request, each
+>sibling has its own vclock and entity tag/vtag while in the PBC request,
+>the entire response only has 1 vclock and each object has its own
+>vtag/entity tag. I'm not too sure if my understanding is complete.
+>
+>Thanks,
+>
+>Shuhao
+>
+>_______________________________________________
+>riak-users mailing list
+>riak-users@lists.basho.com
+>http://lists.basho.com/mailman/listinfo/riak-users_lists.basho.com
+>
+
+
+
+
+From admin@thekks.net Thu Dec 27 17:22:13 2012
+Received: from mail-wi0-f171.google.com ([209.85.212.171]:52346)
+    by cloud3.emwd.com with esmtps (TLSv1:RC4-SHA:128) (Exim 4.80)
+    (envelope-from <admin@thekks.net>) id 1ToLq9-0003C5-N6
+    for riak-users@lists.basho.com; Thu, 27 Dec 2012 17:22:13 -0500
+Received: by mail-wi0-f171.google.com with SMTP id hn14so7996204wib.16
+    for <riak-users@lists.basho.com>; Thu, 27 Dec 2012 14:22:12 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+    d=google.com; s=20120113;
+    h=mime-version:sender:x-originating-ip:in-reply-to:references:date
+    :x-google-sender-auth:message-id:subject:from:to:cc:content-type
+    :x-gm-message-state;
+    bh=pkoUAGHfC7/P3gWTyXqP2rc9ALKR/Ew8A0kZFRFCUXk=;
+    b=jmeMBD0cu+XkvyNyLgPY9uUTZ/Jcqbtj99YynPmNkYKt+tOQNICaXakYHdjVvoYFB8
+    +UCd0y56rPleRnZSh3j9B5MBKI1yyFsm4nvIib8djEt2AzICSX2BgMYjNL1vYMfCFxsZ
+    eYyIT5mi6tMU2M+XAxLDjvpNsWciB8fn2LhADkiOlW115J9aD8LkSzEaYtIkCnRQaJJV
+    jxCwADTbHzEkJF768tzhTOLl0a30pNSpJ91TzMWdOvfIpby57xavFmzNwB4K/CMJfjGA
+    i6Jr+tI41yHPFHxIAH5fGni+uivfl6QvFVZYwUw7t86JFTKt6CJ+9s/tiLiJCiQ9kw7s
+    V1aw==
+MIME-Version: 1.0
+Received: by 10.194.235.100 with SMTP id ul4mr51193701wjc.7.1356646932311;
+    Thu, 27 Dec 2012 14:22:12 -0800 (PST)
+Sender: admin@thekks.net
+Received: by 10.194.119.70 with HTTP; Thu, 27 Dec 2012 14:22:12 -0800 (PST)
+X-Originating-IP: [135.0.136.120]
+Received: by 10.194.119.70 with HTTP; Thu, 27 Dec 2012 14:22:12 -0800 (PST)
+In-Reply-To: <CD02095C.1B62%pvenkatesh@basho.com>
+References: <CCFFD491.1AC7%shuhao@shuhaowu.com>
+    <CD02095C.1B62%pvenkatesh@basho.com>
+Date: Thu, 27 Dec 2012 17:22:12 -0500
+X-Google-Sender-Auth: mKqTpEZBdAKpBfsOuuflZlGdRwQ
+Message-ID: <CAP1J66dPgwGTS=u=zVs+1r2Fn2JLM_RAnJ8qvh3vb9r2Gi41VA@mail.gmail.com>
+Subject: Re: vclock, vtag, entity tag
+From: Shuhao Wu <shuhao@shuhaowu.com>
+To: Pavan Venkatesh <pvenkatesh@basho.com>
+Content-Type: multipart/alternative; boundary=089e014941887c6fd704d1dcfac6
+X-Gm-Message-State: ALoCoQmEAUs9FuSwA98lt10mK71rv02Ub6EQnWaW/mOHFa9dzFOSrQiop7cqsFbCiGmSPt8oPdrf
+Cc: riak-users@lists.basho.com
+X-BeenThere: riak-users@lists.basho.com
+X-Mailman-Version: 2.1.15
+Precedence: list
+List-Id: discussion of the Riak data storage system
+    <riak-users_lists.basho.com.lists.basho.com>
+List-Unsubscribe: <http://lists.basho.com/mailman/options/riak-users_lists.basho.com>,
+    <mailto:riak-users-request@lists.basho.com?subject=unsubscribe>
+List-Archive: <http://lists.basho.com/pipermail/riak-users_lists.basho.com/>
+List-Post: <mailto:riak-users@lists.basho.com>
+List-Help: <mailto:riak-users-request@lists.basho.com?subject=help>
+List-Subscribe: <http://lists.basho.com/mailman/listinfo/riak-users_lists.basho.com>,
+    <mailto:riak-users-request@lists.basho.com?subject=subscribe>
+X-List-Received-Date: Thu, 27 Dec 2012 22:22:13 -0000
+
+--089e014941887c6fd704d1dcfac6
+Content-Type: text/plain; charset=ISO-8859-1
+
+Wait. So with 2 siblings, I should get 2 different vclock and 2 etags from
+http.
+
+But the specification from pbc tells me it will only return 1 vclock and 2
+vtags
+
+Shuhao
+Sent from my phone.
+On 2012-12-27 5:19 PM, "Pavan Venkatesh" <pvenkatesh@basho.com> wrote:
+
+> Hi Shuhao,
+>
+> Lets say, two clients update the same object at the same time (through
+> http or protobuf),then a sibling is created, but with the same vector
+> clock.They merge into single object with one vector clock, but these
+> siblings live in the same object.
+> User intervention is required and one can pick the correct value and issue
+> a put request with that vector clock in order to resolve the conflict.
+> Hope this helps.
+>
+> Pavan
+>
+> On 12/25/12 10:08 PM, "Shuhao" <shuhao@shuhaowu.com> wrote:
+>
+> >Hi,
+> >
+> >I'm just browsing through the API documentations for Riak and I just
+> >noticed a couple of things that's pretty confusing:
+> >
+> >It's my understanding that with the HTTP fetch request, each
+> >object/sibling returned will have its own vclock in the form of the HTTP
+> >header `X-Riak-Vclock` and an entity tag under the header `ETag`. There
+> >is also a vtag url parameter specified by the HTTP fetch request which I
+> >assume fetches specific sibling with that entity tag. [1]
+> >
+> >[1]:
+> >http://docs.basho.com/riak/latest/references/apis/http/HTTP-Fetch-Object/
+> >
+> >However, the protobuf client will return a list of siblings but only
+> >with 1 vclock with `optional bytes vclock = 2;` for all the siblings
+> >returned under `content`. For each sibling, there will be a `vtag`
+> >attribute, which I assume is the entity tag as specified in the HTTP
+> >document. [2]
+> >
+> >[2]:
+> >
+> http://docs.basho.com/riak/latest/references/apis/protocol-buffers/PBC-Fet
+> >ch
+> >-Object/
+> >
+> >So the confusion is that why is it that in the HTTP request, each
+> >sibling has its own vclock and entity tag/vtag while in the PBC request,
+> >the entire response only has 1 vclock and each object has its own
+> >vtag/entity tag. I'm not too sure if my understanding is complete.
+> >
+> >Thanks,
+> >
+> >Shuhao
+> >
+> >_______________________________________________
+> >riak-users mailing list
+> >riak-users@lists.basho.com
+> >http://lists.basho.com/mailman/listinfo/riak-users_lists.basho.com
+> >
+>
+>
+>
+
+--089e014941887c6fd704d1dcfac6
+Content-Type: text/html; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+<p dir=3D"ltr">Wait. So with 2 siblings, I should get 2 different vclock an=
+d 2 etags from http.<br></p>
+<p dir=3D"ltr">But the specification from pbc tells me it will only return =
+1 vclock and 2 vtags</p>
+<p dir=3D"ltr">Shuhao<br>
+Sent from my phone.</p>
+<div class=3D"gmail_quote">On 2012-12-27 5:19 PM, &quot;Pavan  Venkatesh&qu=
+ot; &lt;<a href=3D"mailto:pvenkatesh@basho.com">pvenkatesh@basho.com</a>&gt=
+; wrote:<br type=3D"attribution"><blockquote class=3D"gmail_quote" style=3D=
+"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex">
+Hi Shuhao,<br>
+<br>
+Lets say, two clients update the same object at the same time (through<br>
+http or protobuf),then a sibling is created, but with the same vector<br>
+clock.They merge into single object with one vector clock, but these<br>
+siblings live in the same object.<br>
+User intervention is required and one can pick the correct value and issue<=
+br>
+a put request with that vector clock in order to resolve the conflict.<br>
+Hope this helps.<br>
+<br>
+Pavan<br>
+<br>
+On 12/25/12 10:08 PM, &quot;Shuhao&quot; &lt;<a href=3D"mailto:shuhao@shuha=
+owu.com">shuhao@shuhaowu.com</a>&gt; wrote:<br>
+<br>
+&gt;Hi,<br>
+&gt;<br>
+&gt;I&#39;m just browsing through the API documentations for Riak and I jus=
+t<br>
+&gt;noticed a couple of things that&#39;s pretty confusing:<br>
+&gt;<br>
+&gt;It&#39;s my understanding that with the HTTP fetch request, each<br>
+&gt;object/sibling returned will have its own vclock in the form of the HTT=
+P<br>
+&gt;header `X-Riak-Vclock` and an entity tag under the header `ETag`. There=
+<br>
+&gt;is also a vtag url parameter specified by the HTTP fetch request which =
+I<br>
+&gt;assume fetches specific sibling with that entity tag. [1]<br>
+&gt;<br>
+&gt;[1]:<br>
+&gt;<a href=3D"http://docs.basho.com/riak/latest/references/apis/http/HTTP-=
+Fetch-Object/" target=3D"_blank">http://docs.basho.com/riak/latest/referenc=
+es/apis/http/HTTP-Fetch-Object/</a><br>
+&gt;<br>
+&gt;However, the protobuf client will return a list of siblings but only<br=
+>
+&gt;with 1 vclock with `optional bytes vclock =3D 2;` for all the siblings<=
+br>
+&gt;returned under `content`. For each sibling, there will be a `vtag`<br>
+&gt;attribute, which I assume is the entity tag as specified in the HTTP<br=
+>
+&gt;document. [2]<br>
+&gt;<br>
+&gt;[2]:<br>
+&gt;<a href=3D"http://docs.basho.com/riak/latest/references/apis/protocol-b=
+uffers/PBC-Fet" target=3D"_blank">http://docs.basho.com/riak/latest/referen=
+ces/apis/protocol-buffers/PBC-Fet</a><br>
+&gt;ch<br>
+&gt;-Object/<br>
+&gt;<br>
+&gt;So the confusion is that why is it that in the HTTP request, each<br>
+&gt;sibling has its own vclock and entity tag/vtag while in the PBC request=
+,<br>
+&gt;the entire response only has 1 vclock and each object has its own<br>
+&gt;vtag/entity tag. I&#39;m not too sure if my understanding is complete.<=
+br>
+&gt;<br>
+&gt;Thanks,<br>
+&gt;<br>
+&gt;Shuhao<br>
+&gt;<br>
+&gt;_______________________________________________<br>
+&gt;riak-users mailing list<br>
+&gt;<a href=3D"mailto:riak-users@lists.basho.com">riak-users@lists.basho.co=
+m</a><br>
+&gt;<a href=3D"http://lists.basho.com/mailman/listinfo/riak-users_lists.bas=
+ho.com" target=3D"_blank">http://lists.basho.com/mailman/listinfo/riak-user=
+s_lists.basho.com</a><br>
+&gt;<br>
+<br>
+<br>
+</blockquote></div>
+
+--089e014941887c6fd704d1dcfac6--
