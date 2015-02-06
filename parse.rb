@@ -2,12 +2,15 @@
 
 require 'mail'
 
-message = ''
+message = nil
 count = 0
 
 def parse_message(message)
   mail = Mail.new(message)
 
+  puts mail.from
+  puts mail.subject
+  puts mail.message_id
   #do_other_stuff!
 end
 
@@ -15,6 +18,7 @@ end
 while (line = STDIN.gets)
   if (line.match(/\AFrom /))
     parse_message(message) if (message)
+    #print message
     message = ''
     count += 1
   else
@@ -23,3 +27,4 @@ while (line = STDIN.gets)
 end
 
 puts "the count is #{count}"
+
