@@ -30,4 +30,32 @@ Other goals I'd like to achieve:
 * Make something pretty a la [omglog](https://github.com/benhoskings/omglog) visualization of threads
 * Make a calendar view of contributions
 
+## Usage
 
+The current version is in an early development mode. You can run it by calling `parse.rb` after you read a file: 
+
+     cat mbox.sample | ruby parse.rb
+
+This approach may not be practical going forward and we could look into using the `mail` library to read directly from an mbox file.
+     
+## Versioning
+
+I'd like to add some meaningful tags as milestones are met. They are: 
+
+1. Version `0.1` is able to calculate the **number of orphaned threads**
+1. Version `0.2` is able to identify **unanswered threads**
+1. Version `0.3` is able to identify what threads **from current customers** and active prospects
+
+#### Some Definitions
+
+* **Orphaned**: No one but the original sender has replied to thread 
+* **Unanswered**: Originator last to respond (and possibly more text searching for question marks)
+* **Customer/Prospect**: TBD - some correlation with Salesforce and Zendesk data
+
+## Contributors
+Public contribution is great. We'll make an effort to define them better once this works :+1:. For now, add a shout out below: 
+
+* Originally by [Matthew Brender](https://github.com/mjbrender)
+* Contribution by [Rob Nelson](https://github.com/rnelson0)
+* Great ruby help by [Dmitri Zagidulin](https://github.com/dmitrizagidulin) 
+* __________________ << You're next
