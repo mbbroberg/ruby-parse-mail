@@ -7,11 +7,12 @@
 # http://www.example.com/mailman/private/<listname>.mbox/<listname>.mbox
 
 require 'mail'
+require 'csv'
 
 file_name = ARGV[0]
 senders = {}
 msg_count = 0
-process_limit_num = 10000000000  # Only parse the first N messages
+process_limit_num = 10  # Only parse the first N messages
                                   # Default is set to 100 so you don't   
 puts "Parsing #{file_name}..."
 
@@ -45,4 +46,13 @@ end
 puts "Total messages: #{msg_count} from #{senders.size} distinct authors"
 
 # Print out the senders and # of emails they sent, in ascending order
-puts senders.sort_by { |k,v| v }
+#puts senders.sort_by { |k,v| v }
+
+column_names = senders.first
+s=CSV.generate do |csv|
+  csv << ["Sender", "Tally"]
+  senders.each do |x|
+    csv << x
+  end
+end
+File.write('the_file.csv', s)
