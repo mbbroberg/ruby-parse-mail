@@ -42,7 +42,9 @@ File.open(file_name,"r:iso-8859-2").slice_before(/^From /).each do | lines |
   end
 end
 
-puts "Total messages: #{msg_count} from #{senders.size} distinct authors"
+puts "-----------------------------------------------------------------------------"
+puts "| Total messages: #{msg_count} from #{senders.size} distinct authors |"
+puts "-----------------------------------------------------------------------------"
 
 # Print out the senders and # of emails they sent, in ascending order
 puts senders.sort_by { |k,v| v }
