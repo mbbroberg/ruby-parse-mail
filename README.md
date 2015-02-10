@@ -1,6 +1,6 @@
-# Ruby Parser
+# Ruby Mail Parser
 
-A simple, messy way to review mailing list emails that are compressed into single files.
+A simple way to review mailing list emails that are in mbox format.
 
 ## Goal
 
@@ -32,9 +32,21 @@ Other goals I'd like to achieve:
 
 ## Usage
 
-The current version is in an early development mode. You can run it by calling `parse.rb` after you read a file: 
+The current versions are in an early development mode. 
 
-     cat mbox.sample | ruby parse.rb
+#### parse_mbox.rb
+
+You can run it by running: 
+
+     ./parse_mbox.rb sample.mbox
+
+^ This works well :shipit:
+
+#### parse.rb 
+
+You can run it by calling `parse.rb` after you read a file: 
+
+     cat sample.mbox | ruby parse.rb
 
 This approach may not be practical going forward and we could look into using the `mail` library to read directly from an mbox file.
      

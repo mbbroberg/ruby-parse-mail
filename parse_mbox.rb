@@ -11,9 +11,15 @@ require 'mail'
 file_name = ARGV[0]
 senders = {}
 msg_count = 0
-process_limit_num = 100  # Only parse the first N messages
-
+process_limit_num = 10000000000  # Only parse the first N messages
+                                  # Default is set to 100 so you don't   
 puts "Parsing #{file_name}..."
+
+if process_limit_num < 100000000000
+    puts "Your process_limit_num is set to #{process_limit_num}."
+    puts "It looks like you're in testing mode."
+    puts "You may want to increase it to some absurd number to parse the whole file."
+end
 
 File.open(file_name,"r:iso-8859-2").slice_before(/^From /).each do | lines |
   # Drop the first line since it's the mbox-specific 'From ...@... Sun Aug 09 23:07:58 2009'
