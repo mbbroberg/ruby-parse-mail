@@ -12,7 +12,7 @@ require 'csv'
 file_name = ARGV[0]
 senders = {}
 msg_count = 0
-process_limit_num = 10  # Only parse the first N messages
+process_limit_num = 100000000000  # Only parse the first N messages
                                   # Default is set to 100 so you don't   
 puts "Parsing #{file_name}..."
 
