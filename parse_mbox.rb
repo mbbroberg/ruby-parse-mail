@@ -12,7 +12,7 @@ require 'csv'
 file_name = ARGV[0]
 senders = {}
 msg_count = 0
-process_limit_num = 100000000000  # Only parse the first N messages
+process_limit_num = 1000 # Only parse the first N messages
                                   # Default is set to 100 so you don't   
 puts "Parsing #{file_name}..."
 
@@ -50,9 +50,17 @@ puts "Total messages: #{msg_count} from #{senders.size} distinct authors"
 
 column_names = senders.first
 s=CSV.generate do |csv|
-  csv << ["Sender", "Tally"]
+  csv << ["Sender, ", "Tally"]
   senders.each do |x|
-    csv << x
+    new_x = []
+    if x[0]
+      new_x[0] = x[0].sub('<', ', ').sub('>', '') # strip brackets in a safe way
+      new_x[0].gsub! /"/, ''          # handle case where there are excess double quotes
+    end 
+    if x[1].class == String           # If x[1] exists and it's a string, then we can normalize on lowercase
+      new_x[1] = x[1].downcase
+    end
+    csv << new_x
   end
 end
 File.write('the_file.csv', s)
