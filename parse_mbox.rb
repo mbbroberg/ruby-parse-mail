@@ -31,14 +31,19 @@ File.open(file_name,"r:iso-8859-2").slice_before(/^From /).each do | lines |
   msg = Mail.new(message_text)
   puts msg.subject
 
-  # if the msg.subject is `ss:` it covers RE: and SV: and is a reply
+  # Step 1:
   # msg.to 
   # msg.from
   # Parse them for Basho or not
   #   >> mail.from[0].split("@")
   #   => ["tarvid", "ls.net"]
+
+
+  # Step 2: 
+  # if the msg.subject is `ss:` it covers RE: and SV: and is a reply
   
 
+  # Step 3:
   # Keep a histogram of senders
   from = msg.header['from'].to_s
   if senders.has_key? from
@@ -47,7 +52,8 @@ File.open(file_name,"r:iso-8859-2").slice_before(/^From /).each do | lines |
     senders[from] = 1 
   end
 
-  # tally total messages 
+  # Step 4: 
+  # Keep a tally total of messages 
   msg_count += 1
   if msg_count >= process_limit_num
     break
