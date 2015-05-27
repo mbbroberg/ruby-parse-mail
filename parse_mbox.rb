@@ -36,6 +36,8 @@ msg_count = 0
 process_limit_num = 1000  # Only parse the first N messages
                           # Default is set to 100 so you don't   
 
+re_count = 0
+other_count = 0
 
 puts "Parsing #{file_name}..."
 
@@ -62,28 +64,45 @@ File.open(file_name,"r:iso-8859-2").slice_before(/^From /).each do | lines |
   email = msg.from[0]
   id = email.split("@")[0] ## First value will be the unique identifier of each user
   domain = email.split("@")[1]
-
+  replied = false
+  originator = false
   # Step 2: 
-  # if the msg.subject is `ss:` it covers RE: and SV: and is a reply
-  
+  # if the msg.subject is RE: or SV: then it is a reply
+
+  case msg.subject
+    when /Re:/i
+      re_count+=1
+      replied = true
+    when /recap/i
+      puts "filtering out Recap"
+    when /ANN/ 
+      puts "filtering out Release Announcements"
+    else
+      other_count+=1
+      originator = true
+  end
 
   # Step 3:
   # Tally a histogram of senders
   if senders.has_key? id
-    # If we've seen this before, pop the value out for updates
     puts "ID is #{id}"
     puts email
     puts senders[id]
+
     id_profile = senders[id]
     id_profile[:sent] += 1
+    if originator
+      id_profile[:asked] += 1
+    end
+    if replied
+      id_profile[:answered] += 1
+    end
     senders[id] = id_profile
   else
     # build a profile for the first time
     id_profile = {:asked => 0, :answered => 0, :sent => 1, :email => email, :domain => domain}
     senders[id] = id_profile
   end
-
-
 
   # Step 4: 
   # Keep a tally total of messages 
@@ -114,12 +133,13 @@ if format == "--format=csv"
       if email=id_profile[:email]
         clean_email = email.sub('<', ', ').sub('>', '') # strip brackets in a safe way
         clean_email.gsub!(/"/, '')
+        clean_email.downcase!
       end
-      # if x[1].class == String
-      #   clean_email[1] = x[1].downcase                  # If x[1] exists and it's a string, then we can normalize to down
-      # end
       csv << [clean_email, id_profile[:domain], id_profile[:asked], id_profile[:answered], id_profile[:sent]]
     end
   end
   File.write('the_file.csv', s)
 end
+
+puts "The reply count is #{re_count}"
+puts "Everything else (presumably original threads) was #{other_count}"
