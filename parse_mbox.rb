@@ -25,7 +25,7 @@ require 'csv'
 
 if ARGV.size < 1
   puts "ERROR: Need more input. You must include the mbox to parse."
-  puts "You can also output to CSV with --format=csv"
+  puts "You can also output to CSV with --format=csv."
   exit 
 end
 
@@ -52,7 +52,6 @@ File.open(file_name,"r:iso-8859-2").slice_before(/^From /).each do | lines |
 
   # Parse the message text into a Mail object instance
   msg = Mail.new(message_text)
-  puts msg.subject
 
   # Step 1:
   # msg.to 
@@ -60,24 +59,37 @@ File.open(file_name,"r:iso-8859-2").slice_before(/^From /).each do | lines |
   # Parse them for Basho or not
   #   >> mail.from[0].split("@")
   #   => ["tarvid", "ls.net"]
-
+  email = msg.from[0]
+  id = email.split("@")[0] ## First value will be the unique identifier of each user
+  domain = email.split("@")[1]
 
   # Step 2: 
   # if the msg.subject is `ss:` it covers RE: and SV: and is a reply
   
 
   # Step 3:
-  # Keep a histogram of senders
-  from = msg.header['from'].to_s
-  if senders.has_key? from
-    senders[from] += 1
+  # Tally a histogram of senders
+  if senders.has_key? id
+    # If we've seen this before, pop the value out for updates
+    puts "ID is #{id}"
+    puts email
+    puts senders[id]
+    id_profile = senders[id]
+    id_profile[:sent] += 1
+    senders[id] = id_profile
   else
-    senders[from] = 1 
+    # build a profile for the first time
+    id_profile = {:asked => 0, :answered => 0, :sent => 1, :email => email, :domain => domain}
+    senders[id] = id_profile
   end
+
+
 
   # Step 4: 
   # Keep a tally total of messages 
   msg_count += 1
+
+  ## For testing 
   if msg_count >= process_limit_num
     break
   end
@@ -93,18 +105,20 @@ puts "--------------------------------------------------------------------------
 if format == "--format=csv"
   puts "Printing out to CSV as well."
   s=CSV.generate do |csv|
-    csv << ["Sender", "Tally", "Total Messages", "Total Senders"] # Name the columns
-    csv << ["","",msg_count, senders.size]
+    csv << ["Sender", "Domain", "Asked", "Answered", "Sent", "Total Messages", "Total Senders"] # Name the columns
+    csv << ["","","","","", msg_count, senders.size]
     senders.each do |x|
-      new_x = []
-      if x[0]
-        new_x[0] = x[0].sub('<', ', ').sub('>', '') # strip brackets in a safe way
-        new_x[0].gsub!(/"/, '')
+      id = x[0]
+      id_profile = senders[id]
+      clean_email = []
+      if email=id_profile[:email]
+        clean_email = email.sub('<', ', ').sub('>', '') # strip brackets in a safe way
+        clean_email.gsub!(/"/, '')
       end
-      if x[1].class == String
-        new_x[1] = x[1].downcase                  # If x[1] exists and it's a string, then we can normalize to down
-      end
-      csv << new_x
+      # if x[1].class == String
+      #   clean_email[1] = x[1].downcase                  # If x[1] exists and it's a string, then we can normalize to down
+      # end
+      csv << [clean_email, id_profile[:domain], id_profile[:asked], id_profile[:answered], id_profile[:sent]]
     end
   end
   File.write('the_file.csv', s)
