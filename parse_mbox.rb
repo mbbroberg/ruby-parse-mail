@@ -5,14 +5,39 @@
 # For Mailman/pipermail type mailing lists, you can retrieve them (if you're a list member) at:
 # http://www.example.com/mailman/private/<listname>.mbox/<listname>.mbox
 
+################ REPORTING ###################
+# What am I trying to report on? 
+# 
+# On threads: 
+# => Are any orphaned?
+# => Are any unanswered? 
+# => Answered by Basho or Other?
+#
+#
+# On Users: 
+# => Are they active? (answer is yes if they're in here. Could compare to # of members from elsewhere)
+# => Do they ask questions?
+# => Do they answer questions? 
+###############################################
+
 require 'mail'
+require 'csv'
+
+if ARGV.size < 1
+  puts "ERROR: Need more input. You must include the mbox to parse."
+  puts "You can also output to CSV with --format=csv."
+  exit 
+end
 
 file_name = ARGV[0]
+format = ARGV[1]
 senders = {}
 msg_count = 0
 process_limit_num = 1000  # Only parse the first N messages
                           # Default is set to 100 so you don't   
 
+re_count = 0
+other_count = 0
 
 puts "Parsing #{file_name}..."
 
@@ -29,7 +54,6 @@ File.open(file_name,"r:iso-8859-2").slice_before(/^From /).each do | lines |
 
   # Parse the message text into a Mail object instance
   msg = Mail.new(message_text)
-  puts msg.subject
 
   # Step 1:
   # msg.to 
@@ -37,24 +61,54 @@ File.open(file_name,"r:iso-8859-2").slice_before(/^From /).each do | lines |
   # Parse them for Basho or not
   #   >> mail.from[0].split("@")
   #   => ["tarvid", "ls.net"]
-
-
+  email = msg.from[0]
+  id = email.split("@")[0] ## First value will be the unique identifier of each user
+  domain = email.split("@")[1]
+  replied = false
+  originator = false
   # Step 2: 
-  # if the msg.subject is `ss:` it covers RE: and SV: and is a reply
-  
+  # if the msg.subject is RE: or SV: then it is a reply
+
+  case msg.subject
+    when /Re:/i
+      re_count+=1
+      replied = true
+    when /recap/i
+      puts "filtering out Recap"
+    when /ANN/ 
+      puts "filtering out Release Announcements"
+    else
+      other_count+=1
+      originator = true
+  end
 
   # Step 3:
-  # Keep a histogram of senders
-  from = msg.header['from'].to_s
-  if senders.has_key? from
-    senders[from] += 1
+  # Tally a histogram of senders
+  if senders.has_key? id
+    puts "ID is #{id}"
+    puts email
+    puts senders[id]
+
+    id_profile = senders[id]
+    id_profile[:sent] += 1
+    if originator
+      id_profile[:asked] += 1
+    end
+    if replied
+      id_profile[:answered] += 1
+    end
+    senders[id] = id_profile
   else
-    senders[from] = 1 
+    # build a profile for the first time
+    id_profile = {:asked => 0, :answered => 0, :sent => 1, :email => email, :domain => domain}
+    senders[id] = id_profile
   end
 
   # Step 4: 
   # Keep a tally total of messages 
   msg_count += 1
+
+  ## For testing 
   if msg_count >= process_limit_num
     break
   end
@@ -66,3 +120,26 @@ puts "--------------------------------------------------------------------------
 
 #### Print out the senders and # of emails they sent, in ascending order
 # puts senders.sort_by { |k,v| v }
+
+if format == "--format=csv"
+  puts "Printing out to CSV as well."
+  s=CSV.generate do |csv|
+    csv << ["Sender", "Domain", "Asked", "Answered", "Sent", "Total Messages", "Total Senders"] # Name the columns
+    csv << ["","","","","", msg_count, senders.size]
+    senders.each do |x|
+      id = x[0]
+      id_profile = senders[id]
+      clean_email = []
+      if email=id_profile[:email]
+        clean_email = email.sub('<', ', ').sub('>', '') # strip brackets in a safe way
+        clean_email.gsub!(/"/, '')
+        clean_email.downcase!
+      end
+      csv << [clean_email, id_profile[:domain], id_profile[:asked], id_profile[:answered], id_profile[:sent]]
+    end
+  end
+  File.write('the_file.csv', s)
+end
+
+puts "The reply count is #{re_count}"
+puts "Everything else (presumably original threads) was #{other_count}"
